@@ -1,10 +1,11 @@
 ﻿using FriendsApp.FriendClass;
+using FriendsApp.ConsoleUtilities;
 
 namespace FriendsApp;
 
 class Program
 {
-    static void Output(string title, List<FriendsApp.FriendClass.Friend> friends)
+    static void Output(string title, List<Friend> friends)
     {
         WriteLine(title);
         foreach (Friend friend in friends)
@@ -13,21 +14,33 @@ class Program
         }
     }
 
+    static void OutputOptions(string title, List<Friend> friends)
+    {
+        WriteLine(title);
+        for (int i = 0; i < friends.Count; i++)
+        {
+            WriteLine($"[{i}] ------------ {friends[i].Name}");
+        }
+    }
+
     static void Main(string[] args)
     {
         List<Friend> friendsList = new();
+
+        friendsList.Add(new Friend("Tom", new DateTime(1990, 1, 1)));
+        friendsList.Add(new Friend("Josh", new DateTime(1990, 1, 1)));
 
         bool run = true;
         string separatorString = new string('*', 40);
         string separator = $"\n{separatorString}\n";
 
+        // welcome
+        WriteLine(separator);
+        WriteLine("Welcome to FriendsApp");
+        WriteLine(separator);
+
         while (run)
         {
-            // welcome
-            WriteLine(separator);
-            WriteLine("Welcome to FriendsApp");
-            WriteLine(separator);
-
             // menu
             WriteLine("Menu:");
             WriteLine("[1] ------------ List Friends");
@@ -42,6 +55,7 @@ class Program
             {
                 // Listing Friends
                 case "1":
+                {
                     WriteLine("Here are your friends!");
                     Output("Friends: ", friendsList);
 
@@ -52,9 +66,11 @@ class Program
                         run = false;
                     }
                     break;
+                }
 
                 // Adding Friends
                 case "2":
+                {
                     WriteLine("Name?: ");
                     string? name = ReadLine();
                     WriteLine("Date of birth (yyyy/mm/dd): ");
@@ -75,16 +91,42 @@ class Program
                     friendsList.Add(newFriend);
                     // Additional logic goes here
                     WriteLine("Press Enter to go back, x to quit");
-                    string? answerT = ReadLine();
-                    if (answerT == "x")
+                    string? answer = ReadLine();
+                    if (answer == "x")
                     {
                         run = false;
                     }
                     break;
+                }
                 case "3":
-                    WriteLine("Removing Friends");
-                    // Additional logic goes here
+                {
+                    OutputOptions("Friends List: ", friendsList);
+                    WriteLine("Enter friend to remove from list");
+                    string? removedFriend = ReadLine();
+
+                    if (Int32.TryParse(removedFriend, out int removeIndex))
+                    {
+                        WriteLine($"Removing {friendsList[removeIndex].Name}");
+                        friendsList.RemoveAt(removeIndex);
+                    }
+                    else
+                    {
+                        WriteLine(
+                            "Please try again, enter the index value for the friend you want to remove"
+                        );
+                    }
+
+                    OutputOptions("Friends List: ", friendsList);
+
+                    // back to menu
+                    WriteLine("Press Enter to go back, x to quit");
+                    string? answer = ReadLine();
+                    if (answer == "x")
+                    {
+                        run = false;
+                    }
                     break;
+                }
                 case "x":
                     WriteLine("Goodbye");
                     run = false;
