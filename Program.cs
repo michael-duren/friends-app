@@ -4,8 +4,19 @@ namespace FriendsApp;
 
 class Program
 {
+    static void Output(string title, List<FriendsApp.FriendClass.Friend> friends)
+    {
+        WriteLine(title);
+        foreach (Friend friend in friends)
+        {
+            WriteLine($"   {friend.Name}");
+        }
+    }
+
     static void Main(string[] args)
     {
+        List<Friend> friendsList = new();
+
         bool run = true;
         string separatorString = new string('*', 40);
         string separator = $"\n{separatorString}\n";
@@ -27,14 +38,13 @@ class Program
             // choice
             string? userChoice = ReadLine();
 
-            List<Friend> friendsList = new();
-
             switch (userChoice)
             {
                 // Listing Friends
                 case "1":
                     WriteLine("Here are your friends!");
-                    // Additional logic goes here
+                    Output("Friends: ", friendsList);
+
                     WriteLine("Press Enter to go back, x to quit");
                     string? answer = ReadLine();
                     if (answer == "x")
