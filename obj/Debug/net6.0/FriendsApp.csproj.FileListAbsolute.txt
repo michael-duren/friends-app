@@ -1,0 +1,15 @@
+/Users/michaelduren/myApps/tutorials/C# - Book/projects/FriendsApp/bin/Debug/net6.0/FriendsApp
+/Users/michaelduren/myApps/tutorials/C# - Book/projects/FriendsApp/bin/Debug/net6.0/FriendsApp.deps.json
+/Users/michaelduren/myApps/tutorials/C# - Book/projects/FriendsApp/bin/Debug/net6.0/FriendsApp.runtimeconfig.json
+/Users/michaelduren/myApps/tutorials/C# - Book/projects/FriendsApp/bin/Debug/net6.0/FriendsApp.dll
+/Users/michaelduren/myApps/tutorials/C# - Book/projects/FriendsApp/bin/Debug/net6.0/FriendsApp.pdb
+/Users/michaelduren/myApps/tutorials/C# - Book/projects/FriendsApp/obj/Debug/net6.0/FriendsApp.csproj.AssemblyReference.cache
+/Users/michaelduren/myApps/tutorials/C# - Book/projects/FriendsApp/obj/Debug/net6.0/FriendsApp.GeneratedMSBuildEditorConfig.editorconfig
+/Users/michaelduren/myApps/tutorials/C# - Book/projects/FriendsApp/obj/Debug/net6.0/FriendsApp.AssemblyInfoInputs.cache
+/Users/michaelduren/myApps/tutorials/C# - Book/projects/FriendsApp/obj/Debug/net6.0/FriendsApp.AssemblyInfo.cs
+/Users/michaelduren/myApps/tutorials/C# - Book/projects/FriendsApp/obj/Debug/net6.0/FriendsApp.csproj.CoreCompileInputs.cache
+/Users/michaelduren/myApps/tutorials/C# - Book/projects/FriendsApp/obj/Debug/net6.0/FriendsApp.dll
+/Users/michaelduren/myApps/tutorials/C# - Book/projects/FriendsApp/obj/Debug/net6.0/refint/FriendsApp.dll
+/Users/michaelduren/myApps/tutorials/C# - Book/projects/FriendsApp/obj/Debug/net6.0/FriendsApp.pdb
+/Users/michaelduren/myApps/tutorials/C# - Book/projects/FriendsApp/obj/Debug/net6.0/FriendsApp.genruntimeconfig.cache
+/Users/michaelduren/myApps/tutorials/C# - Book/projects/FriendsApp/obj/Debug/net6.0/ref/FriendsApp.dll
