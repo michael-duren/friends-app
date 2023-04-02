@@ -1,4 +1,4 @@
-namespace FriendsApp.Friend;
+namespace FriendsApp.FriendClass;
 
 public class Friend
 {

@@ -1,4 +1,6 @@
-﻿namespace FriendsApp;
+﻿using FriendsApp.FriendClass;
+
+namespace FriendsApp;
 
 class Program
 {
@@ -25,8 +27,11 @@ class Program
             // choice
             string? userChoice = ReadLine();
 
+            List<Friend> friendsList = new();
+
             switch (userChoice)
             {
+                // Listing Friends
                 case "1":
                     WriteLine("Here are your friends!");
                     // Additional logic goes here
@@ -37,9 +42,34 @@ class Program
                         run = false;
                     }
                     break;
+
+                // Adding Friends
                 case "2":
-                    WriteLine("Adding Friends");
+                    WriteLine("Name?: ");
+                    string? name = ReadLine();
+                    WriteLine("Date of birth (yyyy/mm/dd): ");
+                    string? dateOfBirth = ReadLine();
+                    if (
+                        DateTime.TryParse(dateOfBirth, out DateTime parsedDateOfBirth)
+                        && (name is not null)
+                    )
+                    {
+                        WriteLine("Adding Friend");
+                    }
+                    else
+                    {
+                        WriteLine("Incorrect Date Format");
+                    }
+
+                    Friend newFriend = new(name!, parsedDateOfBirth);
+                    friendsList.Add(newFriend);
                     // Additional logic goes here
+                    WriteLine("Press Enter to go back, x to quit");
+                    string? answerT = ReadLine();
+                    if (answerT == "x")
+                    {
+                        run = false;
+                    }
                     break;
                 case "3":
                     WriteLine("Removing Friends");
