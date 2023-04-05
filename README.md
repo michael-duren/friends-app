@@ -1,1 +1,1 @@
-# A DUMB APP FOR LEARNING PURPOSES
+# Console Application for learning purposes.
