@@ -30,4 +30,21 @@ public static class Utilities
             WriteLine($"[{i}] ------------ {friends[i].Name}");
         }
     }
+
+    public static bool BackToMenu(bool run)
+    {
+        string separatorString = new string('*', 40);
+        string separator = $"\n{separatorString}\n";
+
+        WriteLine(separator);
+        WriteLine("Press Enter to go back, x to exit");
+        WriteLine(separator);
+        string? answer = ReadLine();
+        if (answer == "x")
+        {
+            run = false;
+        }
+
+        return run;
+    }
 }

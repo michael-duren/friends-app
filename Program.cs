@@ -7,9 +7,10 @@ class Program
 {
     static void Main(string[] args)
     {
-        WriteError("TEST");
+        // instantiate new list for session
         List<Friend> friendsList = new();
 
+        // for testing, creating on each launch
         friendsList.Add(new Friend("Tom", new DateTime(1990, 1, 1)));
         friendsList.Add(new Friend("Josh", new DateTime(1990, 1, 1)));
 
@@ -22,38 +23,37 @@ class Program
         WriteLine("Welcome to FriendsApp");
         WriteLine(separator);
 
+        // program loop
         while (run)
         {
             // menu
             WriteLine("Menu:");
-            WriteLine("[1] ------------ List Friends");
-            WriteLine("[2] ------------ Add Friends");
-            WriteLine("[3] ------------ Remove Friends");
-            WriteLine("[x] ------------ Quit");
+            WriteLine("   [1] ------------ List Friends");
+            WriteLine("   [2] ------------ Add Friends");
+            WriteLine("   [3] ------------ Remove Friends");
+            WriteLine("   [x] ------------ Exit");
 
             // choice
             string? userChoice = ReadLine();
 
+            // menu
             switch (userChoice)
             {
                 // Listing Friends
                 case "1":
                 {
+                    WriteLine(separator);
                     WriteLine("Here are your friends!");
                     Output("Friends: ", friendsList);
+                    WriteLine(separator);
 
-                    WriteLine("Press Enter to go back, x to quit");
-                    string? answer = ReadLine();
-                    if (answer == "x")
-                    {
-                        run = false;
-                    }
                     break;
                 }
 
                 // Adding Friends
                 case "2":
                 {
+                    WriteLine(separator);
                     WriteLine("Name?: ");
                     string? name = ReadLine();
                     WriteLine("Date of birth (yyyy/mm/dd): ");
@@ -67,18 +67,15 @@ class Program
                     }
                     else
                     {
-                        WriteLine("Incorrect Date Format");
+                        WriteError("Incorrect Date Format");
                     }
 
                     Friend newFriend = new(name!, parsedDateOfBirth);
                     friendsList.Add(newFriend);
-                    // Additional logic goes here
-                    WriteLine("Press Enter to go back, x to quit");
-                    string? answer = ReadLine();
-                    if (answer == "x")
-                    {
-                        run = false;
-                    }
+                    Output("Friends: ", friendsList);
+
+                    // back to menu
+                    run = BackToMenu(run);
                     break;
                 }
                 case "3":
@@ -94,7 +91,7 @@ class Program
                     }
                     else
                     {
-                        WriteLine(
+                        WriteError(
                             "Please try again, enter the index value for the friend you want to remove"
                         );
                     }
@@ -102,12 +99,7 @@ class Program
                     OutputOptions("Friends List: ", friendsList);
 
                     // back to menu
-                    WriteLine("Press Enter to go back, x to quit");
-                    string? answer = ReadLine();
-                    if (answer == "x")
-                    {
-                        run = false;
-                    }
+                    run = BackToMenu(run);
                     break;
                 }
                 case "x":
@@ -115,7 +107,7 @@ class Program
                     run = false;
                     break;
                 default:
-                    WriteLine("Please pick a valid option and try again");
+                    WriteError("Please pick a valid option and try again");
                     break;
             }
         }
