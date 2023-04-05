@@ -1,30 +1,13 @@
 ﻿using FriendsApp.FriendClass;
-using FriendsApp.ConsoleUtilities;
+using static FriendsApp.ConsoleUtilities.Utilities;
 
 namespace FriendsApp;
 
 class Program
 {
-    static void Output(string title, List<Friend> friends)
-    {
-        WriteLine(title);
-        foreach (Friend friend in friends)
-        {
-            WriteLine($"   {friend.Name}");
-        }
-    }
-
-    static void OutputOptions(string title, List<Friend> friends)
-    {
-        WriteLine(title);
-        for (int i = 0; i < friends.Count; i++)
-        {
-            WriteLine($"[{i}] ------------ {friends[i].Name}");
-        }
-    }
-
     static void Main(string[] args)
     {
+        WriteError("TEST");
         List<Friend> friendsList = new();
 
         friendsList.Add(new Friend("Tom", new DateTime(1990, 1, 1)));
