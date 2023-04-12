@@ -5,6 +5,8 @@ public class Friend
     public string? Name { get; set; }
     public int Age { get; set; }
     public DateTime DateOfBirth { get; set; }
+    public string Email { get; set; }
+    public string Phone { get; set; }
     public readonly DateTime Instantiated;
 
     // constructors
@@ -13,15 +15,19 @@ public class Friend
     {
         Name = "Unknown";
         Age = 0;
+        Email = "Unknown";
+        Phone = "Unknown";
         DateOfBirth = DateTime.Now;
         Instantiated = DateTime.Now;
     }
 
-    public Friend(string name, DateTime dateOfBirth)
+    public Friend(string name, DateTime dateOfBirth, string email, string phone)
     {
         Name = name;
         Age = GetAge(dateOfBirth);
         DateOfBirth = dateOfBirth;
+        Email = email;
+        Phone = phone;
         Instantiated = DateTime.Now;
     }
 

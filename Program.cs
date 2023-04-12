@@ -1,5 +1,7 @@
 ﻿using FriendsApp.FriendClass;
 using static FriendsApp.ConsoleUtilities.Utilities;
+using FriendsApp.Data;
+using FriendsApp.FriendModels;
 
 namespace FriendsApp;
 
@@ -7,12 +9,14 @@ class Program
 {
     static void Main(string[] args)
     {
+        // instantiate new context
+        FriendsContext context = new();
         // instantiate new list for session
         List<Friend> friendsList = new();
 
         // for testing, creating on each launch
-        friendsList.Add(new Friend("Tom", new DateTime(1990, 1, 1)));
-        friendsList.Add(new Friend("Josh", new DateTime(1990, 1, 1)));
+        // friendsList.Add(new Friend("Tom", new DateTime(1990, 1, 1)));
+        // friendsList.Add(new Friend("Josh", new DateTime(1990, 1, 1)));
 
         bool run = true;
         string separatorString = new string('*', 40);
@@ -56,6 +60,10 @@ class Program
                     WriteLine(separator);
                     WriteLine("Name?: ");
                     string? name = ReadLine();
+                    WriteLine("Email: ");
+                    string? email = ReadLine();
+                    WriteLine("Phone");
+                    string? phone = ReadLine();
                     WriteLine("Date of birth (yyyy/mm/dd): ");
                     string? dateOfBirth = ReadLine();
                     if (
@@ -70,7 +78,7 @@ class Program
                         WriteError("Incorrect Date Format");
                     }
 
-                    Friend newFriend = new(name!, parsedDateOfBirth);
+                    Friend newFriend = new(name!, parsedDateOfBirth, email!, phone!);
                     friendsList.Add(newFriend);
                     Output("Friends: ", friendsList);
 
