@@ -48,7 +48,13 @@ class Program
                 {
                     WriteLine(separator);
                     WriteLine("Here are your friends!");
-                    Output("Friends: ", friendsList);
+                    // Output("Friends: ", friendsList);
+                    List<FriendModel> dbFriends = context.Friends.ToList();
+                    foreach (FriendModel friend in dbFriends)
+                    {
+                        WriteLine($"{friend.Name} - {friend.Age} - {friend.DateOfBirth}");
+                    }
+
                     WriteLine(separator);
 
                     break;
@@ -78,8 +84,23 @@ class Program
                         WriteError("Incorrect Date Format");
                     }
 
+                    // add new Friend to list
                     Friend newFriend = new(name!, parsedDateOfBirth, email!, phone!);
+                    // add new Friend to database
+                    FriendModel friendModel =
+                        new()
+                        {
+                            Name = newFriend.Name!,
+                            Age = newFriend.Age,
+                            DateOfBirth = newFriend.DateOfBirth,
+                            Email = newFriend.Email,
+                            Phone = newFriend.Phone,
+                        };
                     friendsList.Add(newFriend);
+                    context.Friends.Add(friendModel);
+                    context.SaveChanges();
+
+                    // output friendsList
                     Output("Friends: ", friendsList);
 
                     // back to menu
