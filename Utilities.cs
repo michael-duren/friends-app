@@ -1,4 +1,5 @@
 using FriendsApp.FriendClass;
+using FriendsApp.FriendModels;
 
 namespace FriendsApp.ConsoleUtilities;
 
@@ -46,5 +47,15 @@ public static class Utilities
         }
 
         return run;
+    }
+
+    public static void ListFriends(List<FriendModel> friendsList)
+    {
+        foreach (FriendModel friend in friendsList)
+        {
+            WriteLine(
+                $"Name: {friend.Name} Age: {friend.Age} Email: {friend.Email} Phone: {friend.Phone}"
+            );
+        }
     }
 }

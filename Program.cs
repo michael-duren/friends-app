@@ -50,13 +50,7 @@ class Program
                     WriteLine("Here are your friends!");
                     // Output("Friends: ", friendsList);
                     List<FriendModel> dbFriends = context.Friends.ToList();
-                    foreach (FriendModel friend in dbFriends)
-                    {
-                        WriteLine(
-                            $"Name: {friend.Name} Age: {friend.Age} Email: {friend.Email} Phone: {friend.Phone}"
-                        );
-                    }
-
+                    ListFriends(dbFriends);
                     WriteLine(separator);
 
                     break;
@@ -109,25 +103,31 @@ class Program
                     run = BackToMenu(run);
                     break;
                 }
+                // removing friends
                 case "3":
                 {
-                    OutputOptions("Friends List: ", friendsList);
-                    WriteLine("Enter friend to remove from list");
+                    List<FriendModel> dbFriends = context.Friends.ToList();
+                    ListFriends(dbFriends);
+                    WriteLine("Enter the name of the Friend you want to remove:");
                     string? removedFriend = ReadLine();
 
-                    if (Int32.TryParse(removedFriend, out int removeIndex))
+                    // remove friend from database
+                    var friendToRemove = context.Friends.FirstOrDefault(
+                        f => f.Name == removedFriend
+                    );
+                    if (friendToRemove is FriendModel)
                     {
-                        WriteLine($"Removing {friendsList[removeIndex].Name}");
-                        friendsList.RemoveAt(removeIndex);
+                        context.Friends.Remove(friendToRemove);
+                        context.SaveChanges();
+                        WriteLine("Friend removed");
                     }
                     else
                     {
-                        WriteError(
-                            "Please try again, enter the index value for the friend you want to remove"
-                        );
+                        WriteLine("Friend not found");
                     }
 
-                    OutputOptions("Friends List: ", friendsList);
+                    WriteLine("Current Friends");
+                    ListFriends(dbFriends);
 
                     // back to menu
                     run = BackToMenu(run);
