@@ -52,7 +52,9 @@ class Program
                     List<FriendModel> dbFriends = context.Friends.ToList();
                     foreach (FriendModel friend in dbFriends)
                     {
-                        WriteLine($"{friend.Name} - {friend.Age} - {friend.DateOfBirth}");
+                        WriteLine(
+                            $"Name: {friend.Name} Age: {friend.Age} Email: {friend.Email} Phone: {friend.Phone}"
+                        );
                     }
 
                     WriteLine(separator);
